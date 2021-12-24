@@ -1,16 +1,16 @@
 # PDF.js Read Only
 [PDF.js Read Only](https://github.com/latuminggi/pdf.js_readonly) is an additional readonly mode for [PDF.js](https://mozilla.github.io/pdf.js), a Portable Document Format (PDF) viewer that is built with HTML5 which is community-driven and supported by Mozilla.
 
-It's purpose to make PDF.js viewer to be readonly mode, including disable right click on mouse (context menu) and several hotkeys such as: 
+Its purpose to make PDF.js viewer to be readonly mode, including disable right click on mouse (context menu) and several hotkeys (keyboard shortcut) such as: 
 * `Ctrl + C` (Copy Text)
 * `Ctrl + O` (Open PDF)
 * `Ctrl + P` (Print PDF)
 * `Ctrl + S` (Save PDF)
-* `PrtSc` (Print Screen) (experimental)
+* `PrtSc` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Print Screen) (experimental)
 
 ## Demo
-1. PDF.js without readonly [`/generic/web/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer.html)
-2. If use PDF.js Read Only [`/generic/web/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html)
+1. PDF.js without read only &nbsp;[`/generic/web/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer.html)
+2. If using PDF.js Read Only [`/generic/web/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html)
 
 ## How to use
 1. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L40)\
