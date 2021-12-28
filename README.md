@@ -6,13 +6,13 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 * `Ctrl + O` (Open PDF)
 * `Ctrl + P` (Print PDF)
 * `Ctrl + S` (Save PDF)
-* `PrtSc` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Print Screen) (experimental)
+* `PrtSc` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Print Screen) (experimental)
 
 ## Demo
 1. PDF.js without read only &nbsp;[`/generic/web/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer.html)
 2. If using PDF.js Read Only [`/generic/web/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html)
 
-## How to use
+## How To Use
 1. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L40)\
 adjustment in `viewer_readonly.html`
     ```
@@ -39,7 +39,7 @@ adjustment in `pdf.js_readonly.js`
       $.getScript( 'viewer.js' );  // Adjust path to viewer.js if necessary
     }
     ```
-3. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L15372)\
+3. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L15379)\
 modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer.js#L15372)
     ```
     /*  Modified for PDF.js Read Only
@@ -59,3 +59,31 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     }, true); */
     ```
     Note: If you want to create `viewer_noprint.js` on your own from `viewer.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are commented.
+
+4. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L75)\
+to `protect` PDF file source
+    ```
+    // value: "compressed.tracemonkey-pldi-09.pdf",
+    /*  Modified for PDF.js Read Only
+     *  It's better to NOT having .PDF extension in the end of file name
+     *  This can avoid like IDM to sniff PDF file type automatically download
+     *  You also can protect PDF file source from direct access using .htaccess
+     *  Or you can never reveal its original file name such as encoding it first!
+     */
+    value: "compressed.tracemonkey-pldi-09",
+    ```
+
+5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
+to access `file` from query string (directly from URL)
+    ```
+    /generic/web/viewer_readonly.html?file={filename.pdf}
+    ```
+    For example: [`/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09.pdf`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09.pdf)
+    ```
+    /generic/web/viewer_readonly.html?file={filename}
+    ```
+    For example: [`/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09)
+    ```
+    /generic/web/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
+    ```
+    For example: [`/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
