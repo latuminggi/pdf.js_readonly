@@ -72,7 +72,14 @@ const defaultOptions = {
     kind: OptionKind.VIEWER + OptionKind.PREFERENCE
   },
   defaultUrl: {
-    value: "compressed.tracemonkey-pldi-09.pdf",
+    // value: "compressed.tracemonkey-pldi-09.pdf",
+    /*  Modified for PDF.js Read Only
+     *  It's better to NOT having .PDF extension in the end of file name
+     *  This can avoid like IDM to sniff PDF file type automatically download
+     *  You also can protect PDF file source from direct access using .htaccess
+     *  Or you can never reveal its original file name such as encoding it first!
+     */
+    value: "compressed.tracemonkey-pldi-09",
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {
