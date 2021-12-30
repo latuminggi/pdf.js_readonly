@@ -11,6 +11,7 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 ## Demo
 1. PDF.js without read only &nbsp;[`/generic/web/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer.html)
 2. If using PDF.js Read Only [`/generic/web/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html)
+3. PDF.js iframe read only &nbsp;&nbsp;&nbsp;[`/test/iframe_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/test/iframe_readonly.html)
 
 ## How To Use
 1. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L40)\
@@ -87,3 +88,21 @@ to access `file` from query string (directly from URL)
     /generic/web/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
+
+## How To Protect PDF file(s) from Direct Access in Nginx
+```
+server {
+  ...
+
+  location ~* \.(pdf)$ {
+    # only allow from following domain(s):
+    valid_referers example.com www.example.com;
+
+    if ($invalid_referer) {
+      return 403;
+    }
+  }
+
+  ...
+}
+```
