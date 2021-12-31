@@ -9,11 +9,31 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 * `PrtSc` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Print Screen) (experimental)
 
 ## Demo
-1. PDF.js without read only &nbsp;[`/generic/web/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer.html)
-2. If using PDF.js Read Only [`/generic/web/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html)
-3. PDF.js iframe read only &nbsp;&nbsp;&nbsp;[`/test/iframe_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/test/iframe_readonly.html)
+<details>
+<summary>A. Desktop</summary>
+
+  1. PDF.js without read only &nbsp;[`/generic/web/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer.html)
+  2. If using PDF.js Read Only [`/generic/web/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html)
+</details>
+
+<details>
+<summary>B. Mobile</summary>
+
+  1. PDF.js without read only &nbsp;[`/mobile-viewer/viewer.html`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer.html)
+  2. If using PDF.js Read Only [`/mobile-viewer/viewer_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html)
+</details>
+
+<details>
+<summary>C. Test</summary>
+
+  1. PDF.js iframe read only &nbsp;&nbsp;&nbsp;[`/test/iframe_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/test/iframe_readonly.html)
+  2. PDF.js mobile responsive [`/test/mobile_responsive.html`](https://latuminggi.github.io/pdf.js_readonly/test/mobile_responsive.html)
+</details>
 
 ## How To Use
+<details>
+<summary>A. Desktop</summary>
+
 1. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L40)\
 adjustment in `viewer_readonly.html`
     ```
@@ -22,6 +42,7 @@ adjustment in `viewer_readonly.html`
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> <!-- adjust your jquery if necessary -->
     <script src="../../js/pdf.js_readonly.js"></script> <!-- adjust path to pdf.js_readonly.js -->
     ```
+
 2. [`/js/pdf.js_readonly.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/pdf.js_readonly.js#L6)\
 adjustment in `pdf.js_readonly.js`
     ```
@@ -40,6 +61,7 @@ adjustment in `pdf.js_readonly.js`
       $.getScript( 'viewer.js' );  // Adjust path to viewer.js if necessary
     }
     ```
+
 3. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L15379)\
 modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer.js#L15372)
     ```
@@ -88,8 +110,106 @@ to access `file` from query string (directly from URL)
     /generic/web/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
+</details>
+<details>
+<summary>B. Mobile</summary>
+
+1. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L76)\
+adjustment in `viewer_readonly.html`
+    ```
+    <!-- PDF.js Read Only Adjustment -->
+    <!-- <script src="viewer.js"></script> --> <!-- you need to comment or remove this line -->
+    <script src="viewer_mod.js"></script> <!-- adjust path to viewer_mod.js -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> <!-- adjust your jquery if necessary -->
+    <script src="../js/pdf.js_mobile_readonly.js"></script> <!-- adjust path to pdf.js_mobile_readonly.js -->
+    ```
+    Note: if you want to enable cache canvas on mobile viewer, you can adjust these lines
+    ```
+    <!-- PDF.js Read Only Adjustment -->
+    <!-- <script src="build/pdf.min.js"></script> --> <!-- use pdf(.min).js to enable cache canvas on mobile -->
+    <script src="build/pdf_mod.min.js"></script> <!-- use pdf_mod(.min).js to disable cache canvas on mobile -->
+    ```
+
+2. [`/js/pdf.js_mobile_readonly.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/pdf.js_mobile_readonly.js#L6)\
+adjustment in `pdf.js_mobile_readonly.js`
+    ```
+    // Read Only Preferences
+    var disableRghtClck = true; // Disable Right Click,   value: true || false
+    var disableCopyText = true; // Disable Copy Text,     value: true || false
+    var disableOpenFile = true; // Disable Open PDF,      value: true || false
+    var disablePrintPdf = true; // Disable Print PDF,     value: true || false
+    var disableDownload = true; // Disable Save PDF,      value: true || false
+    var disablePrntScrn = true; // Disable Print Screen,  value: true || false (experimental)
+    ```
+
+3. [`/mobile-viewer/viewer_mod.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_mod.js)\
+modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer.js)\
+    there are 2 [differences](https://editor.mergely.com/JBKUuwzG)
+    * first: To enable PDF large image size
+    ```
+    /*  Modified for PDF.js Read Only
+     *  To enable PDF large image size
+     */
+    // const MAX_IMAGE_SIZE = 1024 * 1024; // Limited Max Image Size
+    const MAX_IMAGE_SIZE = false; // Unlimited Max Image Size
+    ```
+    * second: To enable get query string of `file` or using default PDF file
+    ```
+    /*  Modified for PDF.js Read Only
+     *  To enable get query string of file
+     *  How can I get query string values in JavaScript? https://stackoverflow.com/a/901144/17754812
+     */
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex   = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    /*  Modified for PDF.js Read Only
+     *  To get query string of file or using default PDF file
+     */
+    // const DEFAULT_URL = "web/compressed.tracemonkey-pldi-09.pdf";
+    // Get PDF file whether from "DEFAULT_URL" or "file" query string
+    var file = getParameterByName('file');
+    const DEFAULT_URL = (file === null || file === "") ? "web/compressed.tracemonkey-pldi-09" : file;
+    ```
+    Note: If you want to create `viewer_mod.js` on your own from `viewer.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are adjusted.
+
+4. [`/mobile-viewer/build/pdf_mod.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf_mod.js#L5092)\
+modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf.js#L5092)
+    ```
+    /*  Modified for PDF.js Read Only
+     *  To disable cache canvas on mobile
+     */
+    /* canvasEntry = this.cache[id];
+    this.canvasFactory.reset(canvasEntry, width, height);
+    canvasEntry.context.setTransform(1, 0, 0, 1, 0, 0); */
+    ```
+    Note: If you want to create `pdf_mod.js` on your own from `pdf.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are commented.
+
+5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
+to access `file` from query string (directly from URL)
+    ```
+    /mobile-viewer/viewer_readonly.html?file=path_to/{filename.pdf}
+    ```
+    For example: [`/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09.pdf`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09.pdf)
+    ```
+    /mobile-viewer/viewer_readonly.html?file=path_to/{filename}
+    ```
+    For example: [`/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09)
+    ```
+    /mobile-viewer/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
+    ```
+    For example: [`/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
+</details>
 
 ## How To Protect PDF file(s) from Direct Access in Nginx
+<details>
+<summary>nginx directive</summary>
+
 ```
 server {
   ...
@@ -106,3 +226,4 @@ server {
   ...
 }
 ```
+</details>
