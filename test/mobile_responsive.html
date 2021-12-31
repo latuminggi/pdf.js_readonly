@@ -9,11 +9,16 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
-                var screenWidth = $(window).width();
-                console.log( 'screenWidth: '+ screenWidth +'px' );
-
                 var viewerDesktop = '../generic/web/viewer_readonly.html?file=../../test/Lorem_ipsum';
                 var viewerMobile  = '../mobile-viewer/viewer_readonly.html?file=../test/Lorem_ipsum';
+                var screenWidth   = $(window).width();
+                var screenHeight  = $(window).height();
+                var topSize       = 50; // pixels
+                var iframeHeight  = screenHeight - topSize; // window height reduced by top size (navbar)
+                console.log( 'screenWidth: '  + screenWidth   +'px' );
+                console.log( 'screenHeight: ' + screenHeight  +'px' );
+
+                $('iframe').attr('height', iframeHeight +'px'); 
 
                 if ( screenWidth > 767) {
                     $('iframe').attr('src', viewerDesktop);
@@ -23,13 +28,13 @@
 
                 $('#btnDesktop').click(function(){
                     $('iframe').remove();
-                    $('#content').append('<iframe class="desktop" />');
+                    $('#content').append('<iframe class="desktop" height="'+ iframeHeight +'px" />');
                     $('iframe').attr('src', viewerDesktop);
                 });
 
                 $('#btnMobile').click(function(){
                     $('iframe').remove();
-                    $('#content').append('<iframe class="mobile" />');
+                    $('#content').append('<iframe class="mobile" height="'+ iframeHeight +'px" />');
                     $('iframe').attr('src', viewerMobile);
                 });
             });
@@ -42,7 +47,7 @@
                 bottom: 0; 
                 right: 0; 
                 width: 100%; 
-                height: 93%; 
+                /* height: 93%; */
                 border: none; 
                 margin: 0; 
                 padding: 0; 
@@ -58,7 +63,7 @@
                 right: 0; 
                 width: 100%;
                 max-width: 420px; 
-                height: 93%; 
+                /* height: 93%; */
                 border: none; 
                 margin: 0; 
                 padding: 0; 
