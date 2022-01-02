@@ -28,7 +28,7 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 
   1. PDF.js iframe read only &nbsp;&nbsp;&nbsp;[`/test/iframe_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/test/iframe_readonly.html)
   2. PDF.js mobile responsive [`/test/mobile_responsive.html`](https://latuminggi.github.io/pdf.js_readonly/test/mobile_responsive.html)
-  3. PDF.js desktop mobile &nbsp;&nbsp;&nbsp;&nbsp; [`/test/desktop_mobile.html`](https://latuminggi.github.io/pdf.js_readonly/test/desktop_mobile.html)
+  3. PDF.js desktop mobile &nbsp;&nbsp;&nbsp;&nbsp;[`/test/desktop_mobile.html`](https://latuminggi.github.io/pdf.js_readonly/test/desktop_mobile.html)
 </details>
 
 ## How To Use
@@ -207,9 +207,20 @@ to access `file` from query string (directly from URL)
     For example: [`/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
 </details>
 
-## How To Protect PDF file(s) from Direct Access in Nginx
+## How To Protect PDF file(s) from Direct Access
 <details>
-<summary>nginx directive</summary>
+<summary>A. Apache</summary>
+
+```
+RewriteEngine on 
+# only allow from following domain(s):
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?example.com*$ [NC] 
+RewriteRule \.(pdf)$ - [F]
+```
+</details>
+
+<details>
+<summary>B. Nginx</summary>
 
 ```
 server {
