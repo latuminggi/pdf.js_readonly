@@ -28,6 +28,7 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 
   1. PDF.js iframe read only &nbsp;&nbsp;&nbsp;[`/test/iframe_readonly.html`](https://latuminggi.github.io/pdf.js_readonly/test/iframe_readonly.html)
   2. PDF.js mobile responsive [`/test/mobile_responsive.html`](https://latuminggi.github.io/pdf.js_readonly/test/mobile_responsive.html)
+  3. PDF.js desktop mobile &nbsp;&nbsp;&nbsp;&nbsp; [`/test/desktop_mobile.html`](https://latuminggi.github.io/pdf.js_readonly/test/desktop_mobile.html)
 </details>
 
 ## How To Use
