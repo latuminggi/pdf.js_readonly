@@ -107,15 +107,15 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
 
 5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
-    ```http
+    ```html
     /generic/web/viewer_readonly.html?file={filename.pdf}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09.pdf`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09.pdf)
-    ```http
+    ```html
     /generic/web/viewer_readonly.html?file={filename}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09)
-    ```http
+    ```html
     /generic/web/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
@@ -204,15 +204,15 @@ modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/
 
 5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
-    ```http
+    ```html
     /mobile-viewer/viewer_readonly.html?file=path_to/{filename.pdf}
     ```
     For example: [`/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09.pdf`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09.pdf)
-    ```http
+    ```html
     /mobile-viewer/viewer_readonly.html?file=path_to/{filename}
     ```
     For example: [`/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09)
-    ```http
+    ```html
     /mobile-viewer/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
     ```
     For example: [`/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
@@ -233,7 +233,7 @@ RewriteRule \.(pdf)$ - [F]
 <details>
 <summary>B. Nginx</summary>
 
-```apacheconf
+```ini
 server {
   ...
 
