@@ -84,8 +84,8 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     ```
     Note: If you want to create `viewer_noprint.js` on your own from `viewer.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are commented.
 
-4. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L75)\
-to `protect` PDF file source
+4. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L75)
+    * to `protect` PDF file source
     ```
     // value: "compressed.tracemonkey-pldi-09.pdf",
     /*  Modified for PDF.js Read Only
@@ -95,6 +95,14 @@ to `protect` PDF file source
      *  Or you can never reveal its original file name such as encoding it first!
      */
     value: "compressed.tracemonkey-pldi-09",
+    ```
+    * to `allow` access PDF file from different domain
+    ```
+    const HOSTED_VIEWER_ORIGINS = ["null", "http://mozilla.github.io", "https://mozilla.github.io", "https://yourdomain.here"];
+    ```
+    and makesure the PDF file webserver has HTTP Header `Access-Control-Allow-Origin`, allowing PDF.js viewer domain
+    ```
+    Access-Control-Allow-Origin: "yourPDFjsViewerDomain.here"
     ```
 
 5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
@@ -130,7 +138,10 @@ adjustment in `viewer_readonly.html`
     <!-- <script src="build/pdf.min.js"></script> --> <!-- use pdf(.min).js to enable cache canvas on mobile -->
     <script src="build/pdf_mod.min.js"></script> <!-- use pdf_mod(.min).js to disable cache canvas on mobile -->
     ```
-
+    and if you want to access PDF file from different domain, makesure the PDF file webserver has HTTP Header `Access-Control-Allow-Origin`, allowing PDF.js viewer domain
+    ```
+    Access-Control-Allow-Origin: "yourPDFjsViewerDomain.here"
+    ```
 2. [`/js/pdf.js_mobile_readonly.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/pdf.js_mobile_readonly.js#L6)\
 adjustment in `pdf.js_mobile_readonly.js`
     ```
