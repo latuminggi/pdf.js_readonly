@@ -37,7 +37,7 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 
 1. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L40)\
 adjustment in `viewer_readonly.html`
-    ```
+    ```html
     <!-- PDF.js Read Only Adjustment -->
     <!-- <script src="viewer.js"></script> --> <!-- you need to comment or remove this line -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> <!-- adjust your jquery if necessary -->
@@ -46,7 +46,7 @@ adjustment in `viewer_readonly.html`
 
 2. [`/js/pdf.js_readonly.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/pdf.js_readonly.js#L6)\
 adjustment in `pdf.js_readonly.js`
-    ```
+    ```js
     // Read Only Preferences
     var disableRghtClck = true; // Disable Right Click,   value: true || false
     var disableCopyText = true; // Disable Copy Text,     value: true || false
@@ -65,7 +65,7 @@ adjustment in `pdf.js_readonly.js`
 
 3. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L15379)\
 modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer.js#L15372)
-    ```
+    ```js
     /*  Modified for PDF.js Read Only
      *  To disable print overlay
      */
@@ -86,7 +86,7 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
 
 4. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L75)
     * to `protect` PDF file source
-    ```
+    ```js
     // value: "compressed.tracemonkey-pldi-09.pdf",
     /*  Modified for PDF.js Read Only
      *  It's better to NOT having .PDF extension in the end of file name
@@ -97,25 +97,25 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     value: "compressed.tracemonkey-pldi-09",
     ```
     * to `allow` access PDF file from different domain
-    ```
+    ```js
     const HOSTED_VIEWER_ORIGINS = ["null", "http://mozilla.github.io", "https://mozilla.github.io", "https://yourdomain.here"];
     ```
     and makesure the PDF file webserver has HTTP Header `Access-Control-Allow-Origin`, allowing PDF.js viewer domain
-    ```
+    ```http
     Access-Control-Allow-Origin: "yourPDFjsViewerDomain.here"
     ```
 
 5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
-    ```
+    ```http
     /generic/web/viewer_readonly.html?file={filename.pdf}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09.pdf`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09.pdf)
-    ```
+    ```http
     /generic/web/viewer_readonly.html?file={filename}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=compressed.tracemonkey-pldi-09)
-    ```
+    ```http
     /generic/web/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
     ```
     For example: [`/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/generic/web/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
@@ -125,7 +125,7 @@ to access `file` from query string (directly from URL)
 
 1. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L76)\
 adjustment in `viewer_readonly.html`
-    ```
+    ```html
     <!-- PDF.js Read Only Adjustment -->
     <!-- <script src="viewer.js"></script> --> <!-- you need to comment or remove this line -->
     <script src="viewer_mod.js"></script> <!-- adjust path to viewer_mod.js -->
@@ -133,18 +133,18 @@ adjustment in `viewer_readonly.html`
     <script src="../js/pdf.js_mobile_readonly.js"></script> <!-- adjust path to pdf.js_mobile_readonly.js -->
     ```
     Note: if you want to enable cache canvas on mobile viewer, you can adjust these lines
-    ```
+    ```html
     <!-- PDF.js Read Only Adjustment -->
     <!-- <script src="build/pdf.min.js"></script> --> <!-- use pdf(.min).js to enable cache canvas on mobile -->
     <script src="build/pdf_mod.min.js"></script> <!-- use pdf_mod(.min).js to disable cache canvas on mobile -->
     ```
     and if you want to access PDF file from different domain, makesure the PDF file webserver has HTTP Header `Access-Control-Allow-Origin`, allowing PDF.js viewer domain
-    ```
+    ```http
     Access-Control-Allow-Origin: "yourPDFjsViewerDomain.here"
     ```
 2. [`/js/pdf.js_mobile_readonly.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/pdf.js_mobile_readonly.js#L6)\
 adjustment in `pdf.js_mobile_readonly.js`
-    ```
+    ```js
     // Read Only Preferences
     var disableRghtClck = true; // Disable Right Click,   value: true || false
     var disableCopyText = true; // Disable Copy Text,     value: true || false
@@ -158,7 +158,7 @@ adjustment in `pdf.js_mobile_readonly.js`
 modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer.js)\
     there are 2 [differences](https://editor.mergely.com/JBKUuwzG)
     * first: To enable PDF large image size
-    ```
+    ```js
     /*  Modified for PDF.js Read Only
      *  To enable PDF large image size
      */
@@ -166,7 +166,7 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     const MAX_IMAGE_SIZE = false; // Unlimited Max Image Size
     ```
     * second: To enable get query string of `file` or using default PDF file
-    ```
+    ```js
     /*  Modified for PDF.js Read Only
      *  To enable get query string of file
      *  How can I get query string values in JavaScript? https://stackoverflow.com/a/901144/17754812
@@ -192,7 +192,7 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
 
 4. [`/mobile-viewer/build/pdf_mod.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf_mod.js#L5092)\
 modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf.js#L5092)
-    ```
+    ```js
     /*  Modified for PDF.js Read Only
      *  To disable cache canvas on mobile
      */
@@ -204,15 +204,15 @@ modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/
 
 5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
-    ```
+    ```http
     /mobile-viewer/viewer_readonly.html?file=path_to/{filename.pdf}
     ```
     For example: [`/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09.pdf`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09.pdf)
-    ```
+    ```http
     /mobile-viewer/viewer_readonly.html?file=path_to/{filename}
     ```
     For example: [`/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=web/compressed.tracemonkey-pldi-09)
-    ```
+    ```http
     /mobile-viewer/viewer_readonly.html?file={http(s)://example.com/filename(.pdf)}
     ```
     For example: [`/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09`](https://latuminggi.github.io/pdf.js_readonly/mobile-viewer/viewer_readonly.html?file=https://latuminggi.github.io/pdf.js_readonly/generic/web/compressed.tracemonkey-pldi-09)
@@ -222,7 +222,7 @@ to access `file` from query string (directly from URL)
 <details>
 <summary>A. Apache</summary>
 
-```
+```apacheconf
 RewriteEngine on 
 # only allow from following domain(s):
 RewriteCond %{HTTP_REFERER} !^http://(www\.)?example.com*$ [NC] 
@@ -233,7 +233,7 @@ RewriteRule \.(pdf)$ - [F]
 <details>
 <summary>B. Nginx</summary>
 
-```
+```apacheconf
 server {
   ...
 
@@ -247,6 +247,29 @@ server {
   }
 
   ...
+}
+```
+</details>
+
+<details>
+<summary>C. PHP</summary>
+
+```php
+$file = '/path/to/file.pdf';
+// only allow if specific cookie(s) available:
+if ( isset( $_COOKIE['yourCookie'] ) && $_COOKIE['yourCookie'] === 'yourCookieValue' ) {
+  // only allow from following domain(s):
+  if ( isset( $_SERVER['HTTP_REFERER'] ) && strpos( $_SERVER['HTTP_REFERER'], 'example.com' ) ) {
+    if ( file_exists($file) ) {
+      // use HTTP header Content-Type application/octet-stream instead application/pdf
+      header('Content-Type: application/octet-stream');
+      header('Content-Length: '. filesize($file));
+      header('Cache-Control: no-cache');
+      header('Pragma: no-cache');
+      readfile($file);
+      exit;
+    }
+  }
 }
 ```
 </details>
