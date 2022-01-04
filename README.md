@@ -35,6 +35,8 @@ Its purpose to make PDF.js viewer to be readonly mode, including disable right c
 <details>
 <summary>A. Desktop</summary>
 
+&nbsp;&nbsp;&nbsp;&nbsp;Support Password Protected PDF
+
 1. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L40)\
 adjustment in `viewer_readonly.html`
     ```html
@@ -122,6 +124,8 @@ to access `file` from query string (directly from URL)
 </details>
 <details>
 <summary>B. Mobile</summary>
+
+&nbsp;&nbsp;&nbsp;&nbsp;NO Support Password Protected PDF
 
 1. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L76)\
 adjustment in `viewer_readonly.html`
@@ -255,13 +259,17 @@ server {
 <summary>C. PHP</summary>
 
 ```php
+<?php
 $file = '/path/to/file.pdf';
-// only allow if specific cookie(s) available:
+// only allow if specific cookie(s) available, for example:
 if ( isset( $_COOKIE['yourCookie'] ) && $_COOKIE['yourCookie'] === 'yourCookieValue' ) {
-  // only allow from following domain(s):
+  // only allow from following domain(s), for example:
   if ( isset( $_SERVER['HTTP_REFERER'] ) && strpos( $_SERVER['HTTP_REFERER'], 'example.com' ) ) {
     if ( file_exists($file) ) {
-      // use HTTP header Content-Type application/octet-stream instead application/pdf
+      /*  use HTTP header Content-Type application/octet-stream instead application/pdf
+       *  this can avoid like IDM to sniff PDF file with mime type application/pdf
+       *  and makesure the URL you create does NOT have .pdf extension in the end 
+       */
       header('Content-Type: application/octet-stream');
       header('Content-Length: '. filesize($file));
       header('Cache-Control: no-cache');
