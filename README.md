@@ -194,17 +194,20 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     ```
     Note: If you want to create `viewer_mod.js` on your own from `viewer.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are adjusted.
 
-4. [`/mobile-viewer/build/pdf_mod.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf_mod.js#L5092)\
-modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf.js#L5092)
+4. [`/mobile-viewer/build/pdf_mod.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf_mod.js#L5091)\
+modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/build/pdf.js#L5091)
     ```js
-    /*  Modified for PDF.js Read Only
-     *  To disable cache canvas on mobile
-     */
-    /* canvasEntry = this.cache[id];
-    this.canvasFactory.reset(canvasEntry, width, height);
-    canvasEntry.context.setTransform(1, 0, 0, 1, 0, 0); */
+    if (this.cache[id] !== undefined) {
+      /*  Modified for PDF.js Read Only
+       *  To disable cache canvas on mobile
+       */
+      /* canvasEntry = this.cache[id]; */
+      canvasEntry = this.canvasFactory.create(width, height);
+      this.canvasFactory.reset(canvasEntry, width, height);
+      canvasEntry.context.setTransform(1, 0, 0, 1, 0, 0);
+    }
     ```
-    Note: If you want to create `pdf_mod.js` on your own from `pdf.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are commented.
+    Note: If you want to create `pdf_mod.js` on your own from `pdf.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are adjusted.
 
 5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
@@ -266,6 +269,7 @@ if ( isset( $_COOKIE['yourCookie'] ) && $_COOKIE['yourCookie'] === 'yourCookieVa
   // only allow from following domain(s), for example:
   if ( isset( $_SERVER['HTTP_REFERER'] ) && strpos( $_SERVER['HTTP_REFERER'], 'example.com' ) ) {
     if ( file_exists($file) ) {
+      header('Access-Control-Allow-Origin: http(s)://example.com');
       /*  use HTTP header Content-Type application/octet-stream instead application/pdf
        *  this can avoid like IDM to sniff PDF file with mime type application/pdf
        *  and makesure the URL you create does NOT have .pdf extension in the end 
