@@ -104,7 +104,7 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     ```
     and makesure the PDF file webserver has HTTP Header `Access-Control-Allow-Origin`, allowing PDF.js viewer domain
     ```http
-    Access-Control-Allow-Origin: "yourPDFjsViewerDomain.here"
+    Access-Control-Allow-Origin: http(s)://yourPDFjsViewerDomain.here
     ```
 
 5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
@@ -144,7 +144,7 @@ adjustment in `viewer_readonly.html`
     ```
     and if you want to access PDF file from different domain, makesure the PDF file webserver has HTTP Header `Access-Control-Allow-Origin`, allowing PDF.js viewer domain
     ```http
-    Access-Control-Allow-Origin: "yourPDFjsViewerDomain.here"
+    Access-Control-Allow-Origin: http(s)://yourPDFjsViewerDomain.here
     ```
 2. [`/js/pdf.js_mobile_readonly.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/pdf.js_mobile_readonly.js#L6)\
 adjustment in `pdf.js_mobile_readonly.js`
