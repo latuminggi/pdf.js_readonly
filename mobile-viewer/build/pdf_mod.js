@@ -5092,9 +5092,10 @@ class CachedCanvases {
       /*  Modified for PDF.js Read Only
        *  To disable cache canvas on mobile
        */
-      /* canvasEntry = this.cache[id];
+      /* canvasEntry = this.cache[id]; */
+      canvasEntry = this.canvasFactory.create(width, height);
       this.canvasFactory.reset(canvasEntry, width, height);
-      canvasEntry.context.setTransform(1, 0, 0, 1, 0, 0); */
+      canvasEntry.context.setTransform(1, 0, 0, 1, 0, 0);
     } else {
       canvasEntry = this.canvasFactory.create(width, height);
       this.cache[id] = canvasEntry;
