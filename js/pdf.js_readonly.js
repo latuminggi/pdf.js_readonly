@@ -9,6 +9,7 @@ var disableCopyText = true; // Disable Copy Text,     value: true || false
 var disableOpenFile = true; // Disable Open PDF,      value: true || false
 var disablePrintPdf = true; // Disable Print PDF,     value: true || false
 var disableDownload = true; // Disable Save PDF,      value: true || false
+var disablePresents = true; // Disable Presentation,  value: true || false
 var disablePrntScrn = true; // Disable Print Screen,  value: true || false (experimental)
 
 // Load Specific viewer.js
@@ -95,5 +96,9 @@ $(document).ready(function() {
   // Disable Download Button
   if ( disableDownload ) {
     $('#download').addClass('hidden'); $('#secondaryDownload').addClass('hidden');
+  }
+  // Disable Presentation Button
+  if ( disablePresents ) {
+    $('#presentationMode').addClass('hidden'); $('#secondaryPresentationMode').addClass('hidden');
   }
 });

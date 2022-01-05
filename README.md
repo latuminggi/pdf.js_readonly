@@ -55,6 +55,7 @@ adjustment in `pdf.js_readonly.js`
     var disableOpenFile = true; // Disable Open PDF,      value: true || false
     var disablePrintPdf = true; // Disable Print PDF,     value: true || false
     var disableDownload = true; // Disable Save PDF,      value: true || false
+    var disablePresents = true; // Disable Presentation,  value: true || false
     var disablePrntScrn = true; // Disable Print Screen,  value: true || false (experimental)
     
     // Load Specific viewer.js
