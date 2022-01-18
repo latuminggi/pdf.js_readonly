@@ -137,9 +137,9 @@ to access `file` from query string (directly from URL)
 <details>
 <summary>B. Mobile</summary>
 
-&nbsp;&nbsp;&nbsp;&nbsp;NO Support Password Protected PDF
+&nbsp;&nbsp;&nbsp;&nbsp;NO Support for Password Protected PDF
 
-1. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L76)\
+1. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L82)\
 adjustment in `viewer_readonly.html`
     ```html
     <!-- PDF.js Read Only Adjustment -->
@@ -148,7 +148,7 @@ adjustment in `viewer_readonly.html`
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> <!-- adjust your jquery if necessary -->
     <script src="../js/pdf.js_mobile_readonly.js"></script> <!-- adjust path to pdf.js_mobile_readonly.js -->
     ```
-    Note: if you want to enable cache canvas on mobile viewer, you can adjust these lines
+    Note: if you want to enable cache canvas on mobile viewer, you can adjust these [lines](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L27)
     ```html
     <!-- PDF.js Read Only Adjustment -->
     <!-- <script src="build/pdf.min.js"></script> --> <!-- use pdf(.min).js to enable cache canvas on mobile -->
@@ -221,7 +221,18 @@ modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/
     ```
     Note: If you want to create `pdf_mod.js` on your own from `pdf.js` file of your current PDF.js version, make sure those lines above (or some codes like that) are adjusted.
 
-5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
+5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L47)\
+adjustment in `viewer_readonly.html` for custom progress document loading
+    ```html
+    <!-- PDF.js Read Only Adjustment -->
+    <!-- Custom Progress Document Loading -->
+    <div id="customProgress" style="text-align:center;padding:10px 0 0">
+      <img src="https://latuminggi.github.io/pdf.js_readonly/img/documentLoadingMobile.gif" width="100%" />
+    </div>
+    ```
+    including adjustment in `viewer_mod.js` as you can see on this [commit diff](https://github.com/latuminggi/pdf.js_readonly/commit/8172737b07b790ac539c0de3499426b2f818ea9c#diff-3569e15944e90b9f9472e96748e81101934df2e8297fd284c3d78f7c4e3c7ab2)
+
+6. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
     ```html
     /mobile-viewer/viewer_readonly.html?file=path_to/{filename.pdf}
