@@ -108,7 +108,18 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     Access-Control-Allow-Origin: http(s)://yourPDFjsViewerDomain.here
     ```
 
-5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
+5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L292)\
+adjustment in `viewer_readonly.html` for custom progress document loading
+    ```html
+    <!-- PDF.js Read Only Adjustment -->
+    <!-- Custom Progress Document Loading -->
+    <div id="customProgress" style="text-align:center;padding:10px 0 0;display:none">
+      <img src="https://latuminggi.github.io/pdf.js_readonly/img/documentLoading.gif" />
+    </div>
+    ```
+    including adjustment in `/js/viewer_noprint.js` as you can see on this [commit diff](https://github.com/latuminggi/pdf.js_readonly/commit/976409087f31d4af3fee5d2990eceedb5e81ccf8#diff-d917cf747bd335be8419f879b7221f135ab2836e4273276a0c582ff59a5a22c8)
+
+6. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
     ```html
     /generic/web/viewer_readonly.html?file={filename.pdf}
