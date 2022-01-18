@@ -108,6 +108,10 @@ const PDFViewerApplication = {
         self.pdfHistory.initialize({ fingerprint: pdfDocument.fingerprint });
 
         self.loadingBar.hide();
+        /*  Modified for PDF.js Read Only
+         *  To hide Custom Progress Document Loading
+         */
+        $('#customProgress').hide();
         self.setTitleUsingMetadata(pdfDocument);
       },
       function (exception) {
@@ -147,6 +151,10 @@ const PDFViewerApplication = {
           self.error(msg, { message });
         });
         self.loadingBar.hide();
+        /*  Modified for PDF.js Read Only
+         *  To hide Custom Progress Document Loading
+         */
+        $('#customProgress').hide();
       }
     );
   },
