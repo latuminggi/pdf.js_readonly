@@ -1176,6 +1176,11 @@ const PDFViewerApplication = {
   },
 
   _documentError(message, moreInfo = null) {
+    /*  Modified for PDF.js Read Only
+     *  To hide Custom Progress Document Loading
+     */
+    $('#customProgress').hide();
+
     this._unblockDocumentLoadEvent();
 
     this._otherError(message, moreInfo);
@@ -1255,10 +1260,6 @@ const PDFViewerApplication = {
     }
 
     const percent = Math.round(level * 100);
-    /*  Modified for PDF.js Read Only
-     *  To show Custom Progress Document Loading
-     */
-    $('#customProgress').show();
 
     if (percent > this.loadingBar.percent || isNaN(percent)) {
       this.loadingBar.percent = percent;
@@ -1409,10 +1410,10 @@ const PDFViewerApplication = {
         this.setInitialView();
       }).then(function () {
         pdfViewer.update();
-        /*  Modified for PDF.js Read Only
-         *  To hide Custom Progress Document Loading
-         */
-        $('#customProgress').hide();
+        /*  Modified for PDF.js Read Only 
+         *  To hide Custom Progress Document Loading 
+         */ 
+        $('#customProgress').hide(); 
       });
     });
     pagesPromise.then(() => {
