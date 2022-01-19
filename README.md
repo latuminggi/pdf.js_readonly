@@ -66,7 +66,7 @@ adjustment in `pdf.js_readonly.js`
     }
     ```
 
-3. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L15379)\
+3. [`/js/viewer_noprint.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/js/viewer_noprint.js#L15388)\
 modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer.js#L15372)
     ```js
     /*  Modified for PDF.js Read Only
@@ -111,13 +111,13 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
 5. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html#L292)\
 adjustment in `viewer_readonly.html` for custom progress document loading
     ```html
-    <!-- PDF.js Read Only Adjustment -->
-    <!-- Custom Progress Document Loading -->
-    <div id="customProgress" style="text-align:center;padding:10px 0 0;display:none">
-      <img src="https://latuminggi.github.io/pdf.js_readonly/img/documentLoading.gif" />
-    </div>
+    <!-- PDF.js Read Only Adjustment --> 
+    <!-- Custom Progress Document Loading --> 
+    <div id="customProgress" style="text-align:center;background:#FDFDFB;min-height:95vh">
+      <img src="https://latuminggi.github.io/pdf.js_readonly/img/documentLoading.gif" /> 
+    </div> 
     ```
-    including adjustment in `/js/viewer_noprint.js` as you can see on this [commit diff](https://github.com/latuminggi/pdf.js_readonly/commit/976409087f31d4af3fee5d2990eceedb5e81ccf8#diff-d917cf747bd335be8419f879b7221f135ab2836e4273276a0c582ff59a5a22c8)
+    including adjustment in `/js/viewer_noprint.js` as you can see on this [commit diff](https://github.com/latuminggi/pdf.js_readonly/commit/ff7f2813926b07e1dc3b3272636fc28507c10761#diff-d917cf747bd335be8419f879b7221f135ab2836e4273276a0c582ff59a5a22c8)
 
 6. [`/generic/web/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/generic/web/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
@@ -173,7 +173,7 @@ adjustment in `pdf.js_mobile_readonly.js`
 3. [`/mobile-viewer/viewer_mod.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_mod.js)\
 modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer.js)\
     there are 2 [differences](https://editor.mergely.com/JBKUuwzG)
-    * first: To enable PDF large image size
+    * [first](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_mod.js#L25): To enable PDF large image size
     ```js
     /*  Modified for PDF.js Read Only
      *  To enable PDF large image size
@@ -181,7 +181,7 @@ modification from [`viewer.js`](https://github.com/latuminggi/pdf.js_readonly/bl
     // const MAX_IMAGE_SIZE = 1024 * 1024; // Limited Max Image Size
     const MAX_IMAGE_SIZE = false; // Unlimited Max Image Size
     ```
-    * second: To enable get query string of `file` or using default PDF file
+    * [second](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_mod.js#L36): To enable get query string of `file` or using default PDF file
     ```js
     /*  Modified for PDF.js Read Only
      *  To enable get query string of file
@@ -224,13 +224,13 @@ modification from [`pdf.js`](https://github.com/latuminggi/pdf.js_readonly/blob/
 5. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html#L47)\
 adjustment in `viewer_readonly.html` for custom progress document loading
     ```html
-    <!-- PDF.js Read Only Adjustment -->
-    <!-- Custom Progress Document Loading -->
-    <div id="customProgress" style="text-align:center;padding:10px 0 0">
-      <img src="https://latuminggi.github.io/pdf.js_readonly/img/documentLoadingMobile.gif" width="100%" />
-    </div>
+    <!-- PDF.js Read Only Adjustment --> 
+    <!-- Custom Progress Document Loading --> 
+    <div id="customProgress" style="text-align:center;background:#FFF;min-height:95vh"> 
+      <img src="https://latuminggi.github.io/pdf.js_readonly/img/documentLoadingMobile.gif" width="100%" /> 
+    </div> 
     ```
-    including adjustment in `viewer_mod.js` as you can see on this [commit diff](https://github.com/latuminggi/pdf.js_readonly/commit/8172737b07b790ac539c0de3499426b2f818ea9c#diff-3569e15944e90b9f9472e96748e81101934df2e8297fd284c3d78f7c4e3c7ab2)
+    including adjustment in `/mobile-viewer/viewer_mod.js` as you can see on this [commit diff](https://github.com/latuminggi/pdf.js_readonly/commit/8172737b07b790ac539c0de3499426b2f818ea9c#diff-3569e15944e90b9f9472e96748e81101934df2e8297fd284c3d78f7c4e3c7ab2)
 
 6. [`/mobile-viewer/viewer_readonly.html`](https://github.com/latuminggi/pdf.js_readonly/blob/master/mobile-viewer/viewer_readonly.html)\
 to access `file` from query string (directly from URL)
